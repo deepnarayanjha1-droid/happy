@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Surprise</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top left, #ffe6f0, #fcd5ce);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+      text-align: center;
+      max-width: 400px;
+      animation: fadeIn 2s ease;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #ff69b4;
+      margin-bottom: 10px;
+      font-family: 'Segoe Script', cursive;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #d63384;
+      margin-bottom: 30px;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 1em;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      width: 80%;
+      margin-bottom: 20px;
+      transition: 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1em;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 2em;
+      display: none;
+      animation: fadeIn 2s forwards, glow 1.5s infinite alternate;
+    }
+
+    #result span {
+      background: linear-gradient(90deg, #ff69b4, #ff1493);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Segoe Script', cursive;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff69b4; }
+      to { text-shadow: 0 0 20px #ff1493; }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      animation: floatUp 6s infinite;
+      color: #ff1493;
+      opacity: 0.4;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Birthday Puzzle 🎉</h1>
+    <p>Enter the secret date to unlock your surprise!</p>
+    <input type="text" id="guess" placeholder="Enter the date">
+    <br>
+    <button onclick="checkAnswer()">Unlock</button>
+    <div id="result"><span>🎂 HAPPY BIRTHDAY, MY LOVE! 🎂</span></div>
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left: 5%;">💖</div>
+  <div class="heart" style="left: 25%;">💘</div>
+  <div class="heart" style="left: 45%;">💕</div>
+  <div class="heart" style="left: 65%;">💞</div>
+  <div class="heart" style="left: 85%;">❤️</div>
+
+  <script>
+    const secretWord = "11"; // Birthday date
+
+    function checkAnswer() {
+      const guess = document.getElementById("guess").value.trim();
+      if (guess === secretWord) {
+        document.getElementById("result").style.display = "block";
+      } else {
+        alert("Oops! Try again, birthday star 🌟");
+      }
+    }
+  </script>
+</body>
+</html>
